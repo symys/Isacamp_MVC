@@ -1,0 +1,95 @@
+﻿@using kategoriMvc;
+@model CategoryProductModel
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Category and Product Lists</h1>
+<h4 class="text-danger">Add category first!</h4>
+
+<div class="row">
+    <div class="col-6">
+        <a asp-controller="Home" asp-action="CreateCategory" class=" btn btn-success"><i class="fa fa-user-plus "></i> Add A New Category</a>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <td>CategoryId</td>
+                    <td>CategoryName</td>
+                    <th>işlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var urun in Model.Categories)
+                {
+                    @if (urun.isDeleteC == false)
+                    {
+                        <tr>
+                            <td>@urun.Id</td>
+                            <td>@urun.CategoryName</td>
+                            <td>
+                                <a class=" btn btn-dark" href="~/Home/EditCategory/@urun.Id"><i class="fa fa-cogs"></i> Edit</a>
+                                <a class=" btn btn-danger" href="~/Home/DeleteCategory/@urun.Id"><i class="fa fa-trash"></i> Delete</a>
+                            </td>
+                        </tr>
+                    }
+
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-6">
+        <a asp-controller="Home" asp-action="CreateProduct" class=" btn btn-success"><i class="fa fa-user-plus "></i> Add A New Product</a>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <td>Product Id</td>
+                    <td>Category name</td>
+                    <th>Product Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var urun in Model.Products)
+                {
+                    @if (urun.isDeleteP == false)
+                    {
+                        <tr>
+                            <td>@urun.ProductId</td>
+                            <td>@(Model.Categories.FirstOrDefault(x=>x.Id == urun.CategoryId).CategoryName)</td>
+                            <td>@urun.ProductName</td>
+                            <td>
+                                <a class=" btn btn-dark" href="~/Home/EditProduct/@urun.ProductId"><i class="fa fa-cogs"></i> Edit</a>
+                                <a class=" btn btn-danger" href="~/Home/DeleteProduct/@urun.ProductId"><i class="fa fa-trash"></i> Delete</a>
+                            </td>
+                        </tr>
+                    }
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@*<a asp-controller="Home" asp-action="Create" class=" btn btn-success"><i class="fa fa-user-plus "></i> Create A Category</a>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td>CategoryId</td>
+            <td>CategoryName</td>
+            <th>işlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var urun in Model.Categories)
+        {
+            <tr>
+                <td>@urun.CategoryId</td>
+                <td>@urun.CategoryName</td>
+                <td>
+                    <a class=" btn btn-dark" href="~/Edit/@urun.CategoryId"><i class="fa fa-cogs"></i> Edit</a>
+                    <a class=" btn btn-danger" href="~/Delete/@urun.CategoryId"><i class="fa fa-trash"></i> Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>*@
+

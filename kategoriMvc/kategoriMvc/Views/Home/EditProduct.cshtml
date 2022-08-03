@@ -1,0 +1,43 @@
+﻿@model kategoriMvc.Models.Product
+@{
+    ViewData["Title"] = "EditProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit @Model.ProductName</h1>
+<br />
+
+<h3>Lütfen sectiginiz ürünün sadece ismini degistirin</h3>
+
+<br />
+
+<div class="row">
+    <div class="col-6">
+        @using (Html.BeginForm())
+        {
+            <!--html begin form sunu yapıyor aslında: -->
+            <!--<form method="Post" action="~/admin/edit/1"</form>-->
+
+            <div class="form-group">
+                <label for="ProductId" class="form-label">Product Id</label>
+                <input type="text" class="form-control" required value="@Model.ProductId" name="ProductId" id="ProductId" readonly="readonly"/>
+            </div>
+            <div class="form-group">
+                <label for="CategoryId" class="form-label">Category Id</label>
+                <input type="text" class="form-control" required value="@Model.CategoryId" name="CategoryId" id="CategoryId" />
+            </div>
+            <div class="form-group">
+                <label for="ProductName" class="form-label">Product Name</label>
+                <input type="text" class="form-control" required value="@Model.ProductName" name="ProductName" id="ProductName" />
+            </div>
+
+            <input type="hidden" name="Id" id="Id" value="@Model.ProductName" />
+            <input type="submit" class="btn btn-success float-right" value="Edit Product" />
+            <!--float-right calısmazsa style da float:rigth-->
+        }
+
+    </div>
+</div>
+
+
+

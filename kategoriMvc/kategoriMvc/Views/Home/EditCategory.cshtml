@@ -1,0 +1,37 @@
+﻿@model kategoriMvc.Models.Category
+@{
+    ViewData["Title"] = "EditCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit @Model.CategoryName</h1>
+<br />
+<h3>Lütfen sectiginiz kategorinin sadece ismini degistirin</h3>
+
+<br />
+
+<div class="row">
+    <div class="col-6">
+        @using (Html.BeginForm())
+        {
+            <!--html begin form sunu yapıyor aslında: -->
+            <!--<form method="Post" action="~/admin/edit/1"</form>-->
+
+            <div class="form-group">
+                <label for="Id" class="form-label">Category ID</label>
+                <input type="text" class="form-control" required value="@Model.Id" name="Id" id="Id" readonly="readonly"/>
+            </div>
+            <div class="form-group">
+                <label for="CategoryName" class="form-label">Category Name</label>
+                <input type="text" class="form-control" required value="@Model.CategoryName" name="CategoryName" id="CategoryName" />
+            </div>
+          
+            <input type="hidden" name="Id" id="Id" value="@Model.CategoryName" />
+            <input type="submit" class="btn btn-success float-right" value="Edit Category" />
+            <!--float-right calısmazsa style da float:rigth-->
+        }
+
+    </div>
+</div>
+
+
